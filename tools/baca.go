@@ -1,9 +1,8 @@
-package baca
+package tools
 
 import (
 	"fmt"
 
-	"github.com/NabilHilmi21/alpro2_final_project/search"
 	"github.com/NabilHilmi21/alpro2_final_project/storage"
 )
 
@@ -12,14 +11,14 @@ func Baca_funds() {
 	var jumlah int = 0
 
 	for {
-		fmt.Print("Nama tempat danamu ('-' untuk berhenti): ")
+		fmt.Print("--- Nama tempat danamu ('-' untuk berhenti): ")
 		fmt.Scan(&funds_nama)
 
 		if funds_nama == "-" {
 			break
 		}
 
-		if search.Check_funds(storage.Arr_funds, storage.Funds_count, funds_nama) != -1 {
+		if Check_funds(storage.Arr_funds, storage.Funds_count, funds_nama) != -1 {
 			fmt.Println("Tempat dana dengan nama tersebut sudah ada. Coba lagi yang lain")
 			continue
 		}
@@ -36,22 +35,32 @@ func Baca_funds() {
 }
 
 func Baca_users() {
-	var user_nama string
+	var user_nama, password string
 	var jumlah int = 0
 
 	for {
-		fmt.Print("Enter username ('-' untuk berhenti): ")
+		fmt.Print("--- Enter username ('-' untuk berhenti): ")
 		fmt.Scan(&user_nama)
 
 		if user_nama == "-" {
 			break
 		}
 
-		if search.Check_user(storage.Arr_users, storage.Users_count, user_nama) != -1 || user_nama == "-" {
+		if Check_user(storage.Arr_users, storage.Users_count, user_nama) != -1 || user_nama == "-" {
 			fmt.Println("User dengan username tersebut sudah ada. Coba lagi yang lain")
 			continue
 		}
 
+		fmt.Print("--- Enter password: ")
+		fmt.Scan(&password)
+		fmt.Println("")
+
+		if len(password) < 3 {
+			fmt.Println("Password harus minimal 3 karakter, silakan coba lagi.")
+			continue
+		}
+
+		storage.Arr_users[storage.Users_count].Password = password
 		storage.Arr_users[storage.Users_count].Id, storage.Arr_users[storage.Users_count].Nama = storage.Users_count, user_nama
 
 		storage.Users_count++

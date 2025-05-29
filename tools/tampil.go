@@ -1,4 +1,4 @@
-package tampil
+package tools
 
 import (
 	"fmt"

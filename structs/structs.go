@@ -3,9 +3,10 @@ package structs
 const NMAX int = 99
 
 type Users struct {
-	Id    int
-	Total int
-	Nama  string
+	Id       int
+	Total    int
+	Nama     string
+	Password string
 }
 
 type Funds struct {

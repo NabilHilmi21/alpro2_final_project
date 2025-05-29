@@ -1,16 +1,19 @@
-package user_handlers
+package handlers
 
 import (
 	"fmt"
 
 	"github.com/NabilHilmi21/alpro2_final_project/storage"
+
 	"github.com/NabilHilmi21/alpro2_final_project/tampilan"
+
+	"github.com/NabilHilmi21/alpro2_final_project/tools"
 )
 
 func Funds_handler(choice int) {
 	switch choice {
 	case 1:
-		donate_funds(storage.Current_user)
+		tools.Donate_funds(storage.Current_user)
 	case 2:
 		var pilih int
 		for {
@@ -21,13 +24,13 @@ func Funds_handler(choice int) {
 			fmt.Scan(&pilih)
 			switch pilih {
 			case 1:
-				sorting.sorting.UrutMenaikFundsID(&storage.Arr_funds, storage.Funds_count)
+				tools.UrutMenaikFundsID(&storage.Arr_funds, storage.Funds_count)
 				fmt.Println("Dana berhasil diurutkan berdasarkan ID terkecil.")
-				tampil.tampil_funds()
+				tools.Tampil_funds()
 			case 2:
-				sorting.UrutMenurunFundsID(&storage.Arr_funds, storage.Funds_count)
+				tools.UrutMenurunFundsID(&storage.Arr_funds, storage.Funds_count)
 				fmt.Println("Dana berhasil diurutkan berdasarkan ID terbesar.")
-				tampil.tampil_funds()
+				tools.Tampil_funds()
 			case 0:
 				return
 			default:
@@ -45,13 +48,13 @@ func Funds_handler(choice int) {
 			fmt.Scan(&pilih)
 			switch pilih {
 			case 1:
-				sorting.UrutMenaikFundsTotal(&storage.Arr_funds, storage.Funds_count)
+				tools.UrutMenaikFundsTotal(&storage.Arr_funds, storage.Funds_count)
 				fmt.Println("Dana berhasil diurutkan berdasarkan total donasi terkecil.")
-				tampil.tampil_funds()
+				tools.Tampil_funds()
 			case 2:
-				sorting.UrutMenurunFundsTotal(&storage.Arr_funds, storage.Funds_count)
+				tools.UrutMenurunFundsTotal(&storage.Arr_funds, storage.Funds_count)
 				fmt.Println("Dana berhasil diurutkan berdasarkan total donasi terkecil.")
-				tampil.tampil_funds()
+				tools.Tampil_funds()
 			case 0:
 				return
 			default:
@@ -81,7 +84,7 @@ func User_handler(choice int) {
 			show_gui = false
 		} else {
 			for show_gui {
-				tampil.tampil_funds()
+				tools.Tampil_funds()
 				funds_choice = tampilan.Funds_option()
 
 				if funds_choice == 0 {
@@ -90,7 +93,7 @@ func User_handler(choice int) {
 					fmt.Println("")
 					show_gui = false
 				} else {
-					funds_handler(funds_choice)
+					Funds_handler(funds_choice)
 				}
 			}
 		}

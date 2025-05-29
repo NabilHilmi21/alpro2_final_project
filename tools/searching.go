@@ -1,4 +1,4 @@
-package search
+package tools
 
 import "github.com/NabilHilmi21/alpro2_final_project/storage"
 

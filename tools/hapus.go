@@ -1,16 +1,13 @@
-package hapus
+package tools
 
 import (
 	"fmt"
 
-	"github.com/NabilHilmi21/alpro2_final_project/search"
 	"github.com/NabilHilmi21/alpro2_final_project/storage"
 )
 
 func Hapus_users(x string) {
-	var index int
-
-	index = search.Check_user(storage.Arr_users, storage.Users_count, x)
+	var index int = Check_user(storage.Arr_users, storage.Users_count, x)
 
 	if index == -1 {
 		fmt.Println("Tidak ada user yang bernama", x)
@@ -23,17 +20,15 @@ func Hapus_users(x string) {
 
 	storage.Users_count--
 
-	fmt.Println("User bernama", x, "berhasil dihapus.")
+	fmt.Println("User bernama '", x, "'berhasil dihapus.")
 
 }
 
 func Hapus_funds(x string) {
-	var index int
-
-	index = search.Check_funds(storage.Arr_funds, storage.Funds_count, x)
+	var index int = Check_funds(storage.Arr_funds, storage.Funds_count, x)
 
 	if index == -1 {
-		fmt.Println("Tidak ada fund yang bernama", x)
+		fmt.Println("Tidak ada fund yang bernama '", x, "'")
 		return
 	}
 
@@ -43,6 +38,7 @@ func Hapus_funds(x string) {
 
 	storage.Funds_count--
 
-	fmt.Println("Fund", x, "berhasil dihapus.")
+	fmt.Println("Fund '", x, "' berhasil dihapus.")
+	fmt.Println("")
 
 }

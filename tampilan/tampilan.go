@@ -1,18 +1,22 @@
 package tampilan
 
-import "fmt"
+import (
+	"fmt"
 
-// buat tampilin menu utama
+	"github.com/NabilHilmi21/alpro2_final_project/storage"
+)
+
+// Menampilkan menu utama
 func Open_gui() int {
 	fmt.Println("==============================================")
-	fmt.Printf("%10sWelcome to TelkomFunds!    \n", "")
+	fmt.Printf("%10sSelamat Datang di TelkomFunds!    \n", "")
 	fmt.Println("==============================================")
-	fmt.Println("--- Login as: ")
+	fmt.Println("--- Masuk sebagai: ")
 	fmt.Println("1. Admin")
-	fmt.Println("2. User")
-	fmt.Println("0. Exit")
+	fmt.Println("2. Pengguna")
+	fmt.Println("0. Keluar")
 	fmt.Println("==============================================")
-	fmt.Print("--- Input Your Choice: ")
+	fmt.Print("--- Masukkan Pilihan Anda: ")
 
 	var choice int
 
@@ -22,19 +26,20 @@ func Open_gui() int {
 	return choice
 }
 
+// Menampilkan menu Admin
 func Admin_gui() int {
 	fmt.Println("==============================================")
-	fmt.Printf("%8sWelcome to TelkomFunds Admin!    \n", "")
+	fmt.Printf("%8sSelamat Datang, Admin TelkomFunds!    \n", "")
 	fmt.Println("==============================================")
 	fmt.Println("--- Menu: ")
-	fmt.Println("1. View all users")
-	fmt.Println("2. View all funds")
-	fmt.Println("3. Add new user")
-	fmt.Println("4. Add new fund")
-	fmt.Println("5. View all transaction history")
-	fmt.Println("0. Kebali ke menu utama")
+	fmt.Println("1. Lihat semua pengguna")
+	fmt.Println("2. Lihat semua dana")
+	fmt.Println("3. Tambah pengguna baru")
+	fmt.Println("4. Tambah dana baru")
+	fmt.Println("5. Lihat semua riwayat transaksi")
+	fmt.Println("0. Kembali ke menu utama")
 	fmt.Println("==============================================")
-	fmt.Print("Your input: ")
+	fmt.Print("--- Masukkan Pilihan Anda: ")
 
 	var choice int
 
@@ -43,62 +48,84 @@ func Admin_gui() int {
 	return choice
 }
 
+// Menampilkan menu Pengguna
 func User_gui() int {
 	fmt.Println("==============================================")
-	fmt.Printf("%9sWelcome to TelkomFunds User!    \n", "")
+	fmt.Printf("%9sSelamat Datang di TelkomFunds %s!    \n", "", storage.Current_user)
 	fmt.Println("==============================================")
 	fmt.Println("--- Menu: ")
-	fmt.Println("1. View my transactions")
-	fmt.Println("2. View available funds")
+	fmt.Println("1. Lihat riwayat transaksi saya")
+	fmt.Println("2. Lihat dana yang tersedia")
 	fmt.Println("0. Kembali ke menu utama")
-	fmt.Print("Your input: ")
+	fmt.Println("==============================================")
+	fmt.Print("--- Masukkan Pilihan Anda: ")
 
 	var choice int
 	fmt.Scan(&choice)
 
-	fmt.Println("==============================================")
 	return choice
 }
 
+// Menampilkan menu login pengguna
+func Users_login() int {
+	fmt.Println("==============================================")
+	fmt.Printf("%10sSelamat Datang di Halaman Masuk    \n", "")
+	fmt.Println("==============================================")
+	fmt.Println("--- Masuk atau Daftar: ")
+	fmt.Println("1. Masuk")
+	fmt.Println("2. Daftar")
+	fmt.Println("0. Kembali ke menu utama")
+	fmt.Println("==============================================")
+	fmt.Print("-- Masukkan Pilihan Anda: ")
+
+	var choice int
+	fmt.Scan(&choice)
+
+	return choice
+}
+
+// Menampilkan opsi pengguna untuk Admin
 func Users_option_admin() int {
 	var choice int
 
-	fmt.Println("--- MENU USERS ADMIN")
-	fmt.Println("1. Hapus user")
-	fmt.Println("2. Urutkan sesuai ID")
-	fmt.Println("3. Urutkan sesuai total donasi")
+	fmt.Println("--- MENU PENGGUNA ADMIN")
+	fmt.Println("1. Hapus pengguna")
+	fmt.Println("2. Urutkan berdasarkan ID")
+	fmt.Println("3. Urutkan berdasarkan total donasi")
 	fmt.Println("0. Kembali")
-	fmt.Print("--- Pilihanmu: ")
+	fmt.Print("--- Masukkan Pilihan Anda: ")
 
 	fmt.Scan(&choice)
 
 	return choice
 }
 
+// Menampilkan opsi dana untuk Admin
 func Funds_option_admin() int {
 	var choice int
 
-	fmt.Println("--- MENU FUNDS ADMIN")
+	fmt.Println("--- MENU DANA ADMIN")
 	fmt.Println("1. Hapus tempat donasi")
-	fmt.Println("2. Urutkan sesuai ID")
-	fmt.Println("3. Urutkan sesuai total donasi")
+	fmt.Println("2. Urutkan berdasarkan ID")
+	fmt.Println("3. Urutkan berdasarkan total donasi")
 	fmt.Println("0. Kembali")
-	fmt.Print("--- Pilihanmu: ")
+	fmt.Print("--- Masukkan Pilihan Anda: ")
 
 	fmt.Scan(&choice)
 
 	return choice
 }
 
+// Menampilkan opsi dana untuk Pengguna
 func Funds_option() int {
 	var choice int
 
-	fmt.Println("--- MENU FUNDS USER")
-	fmt.Println("1. Donasi ke tempat dana pilihamu")
-	fmt.Println("2. Urutkan sesuai ID")
-	fmt.Println("3. Urutkan sesuai total donasi")
+	fmt.Println("--- MENU DANA PENGGUNA")
+	fmt.Println("1. Donasi ke tempat dana pilihan Anda")
+	fmt.Println("2. Urutkan berdasarkan ID")
+	fmt.Println("3. Urutkan berdasarkan total donasi")
 	fmt.Println("0. Kembali")
-	fmt.Print("--- Pilihanmu: ")
+	fmt.Print("--- Masukkan Pilihan Anda: ")
 
 	fmt.Scan(&choice)
 
