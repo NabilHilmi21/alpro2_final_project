@@ -1,21 +1,21 @@
-package models
+package structs
 
 const NMAX int = 99
 
-type users struct {
+type Users struct {
 	Id    int
 	Total int
 	Nama  string
 }
 
-type funds struct {
+type Funds struct {
 	Id      int
 	Nama    string
 	Nominal int
 	Total   int
 }
 
-type riwayat struct {
+type Riwayat struct {
 	Id      int
 	Nama    string
 	Nominal int

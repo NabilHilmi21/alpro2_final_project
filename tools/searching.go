@@ -1,13 +1,13 @@
 package search
 
-import "github.com/NabilHilmi21/alpro2_final_project/models"
+import "github.com/NabilHilmi21/alpro2_final_project/storage"
 
 /*
 check apakah user ada apa engga menggunakan SEQUENTIAL SEARCH
 dan mengembalikan INDEX user tersebut
 */
 
-func check_user(T models.Tab_users, n int, x string) int {
+func Check_user(T storage.Tab_users, n int, x string) int {
 	var ketemu int = -1
 	var k int = 0
 
@@ -25,7 +25,7 @@ check apakah funds ada apa engga menggunakan SEQUENTIAL SEARCH
 dan mengembalikan INDEX funds tersebut
 */
 
-func check_funds(T models.Tab_funds, n int, x string) int {
+func Check_funds(T storage.Tab_funds, n int, x string) int {
 	var ketemu int = -1
 	var k int = 0
 
