@@ -43,32 +43,24 @@ Terdapat dua peran utama: Admin dan User. Admin bisa melihat, menghapus, menyort
 🔐 **ADMIN**
 
 1. Login menggunakan kredensial
-
 2. Mengakses data semua user
-
 2. Melihat menghapus dan menambahkan data user/fund
-
 4. Mengurutkan dan mencari data
-
 5. Melihat semua riwayat transaksi user
 
 🙋‍♂️ **USER**
 
 1. Registrasi / Login
-
 2. Berdonasi ke dana yang tersedia
-
 3. Melihat riwayat donasi pribadi
 
 📌 **FITUR UTAMA**
 1. ✅ Login & Register
-
 2. 📄 Tampilkan daftar user & fund
-
 3. 🔍 Searching & sorting data
-
 4. 🗑️ Hapus data user/fund
-
 5. 💸 Donasi ke fund
-
 6. 🧾 Riwayat donasi
+
+⚒️ **PERBAIKAN / TAMBAHAN FITUR**
+1. Riwayat transaksi pribadi masih belum bisa
