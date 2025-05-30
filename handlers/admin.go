@@ -14,8 +14,7 @@ func Main_handler(choice int) {
 	var user_log bool = false
 	var admin_choice, user_choice int
 
-	switch choice {
-	case 1:
+	if choice == 1 {
 		fmt.Println("Sedang masuk sebagai admin...")
 		fmt.Println("")
 
@@ -33,16 +32,18 @@ func Main_handler(choice int) {
 				} else {
 					Admin_handler(admin_choice)
 				}
+
 			}
+
 		} else {
 			fmt.Println("Masuk gagal. Kembali ke menu utama.")
 			fmt.Println("")
 		}
-	case 2:
+
+	} else if choice == 2 {
 		user_choice = tampilan.Users_login()
 
-		switch user_choice {
-		case 1:
+		if user_choice == 1 {
 			if auth.User_auth() {
 				user_log = true
 
@@ -57,19 +58,23 @@ func Main_handler(choice int) {
 						User_handler(login_choice)
 					}
 				}
+
 			} else {
 				fmt.Println("Masuk gagal. Kembali ke menu utama.")
 				fmt.Println("")
 			}
 
-		case 2:
+		} else if user_choice == 2 {
 			auth.User_reg()
 		}
 
-	case 0:
+	} else if choice == 0 {
 		fmt.Println("Keluar dari menu...")
 		fmt.Println("")
-	default:
+
+		return
+
+	} else {
 		fmt.Println("Pilihan tidak valid, silakan coba lagi.")
 		fmt.Println("")
 	}
@@ -145,72 +150,73 @@ func Admin_handler(choice int) {
 }
 
 func Funds_handler_admin(choice int) {
-	switch choice {
-	case 1:
-		var nama_dana string
+	for {
+		if choice == 1 {
+			var nama_dana string
 
-		fmt.Println("")
-		fmt.Print("Ketik nama dana yang ingin dihapus: ")
-		fmt.Scan(&nama_dana)
-		fmt.Println("")
+			fmt.Println("")
+			fmt.Print("Ketik nama dana yang ingin dihapus: ")
+			fmt.Scan(&nama_dana)
+			fmt.Println("")
 
-		tools.Hapus_funds(nama_dana)
-	case 2:
-		var pilih int
-		for {
-			fmt.Println("1. Urutkan dari ID terkecil")
-			fmt.Println("2. Urutkan dari ID terbesar")
-			fmt.Println("0. Kembali")
-			fmt.Print("Pilihan Anda: ")
-			fmt.Scan(&pilih)
-			switch pilih {
-			case 1:
-				tools.UrutMenaikFundsID(&storage.Arr_funds, storage.Funds_count)
-				fmt.Println("Dana berhasil diurutkan berdasarkan ID terkecil.")
-				tools.Tampil_funds()
-			case 2:
-				tools.UrutMenurunFundsID(&storage.Arr_funds, storage.Funds_count)
-				fmt.Println("Dana berhasil diurutkan berdasarkan ID terbesar.")
-				tools.Tampil_funds()
-			case 0:
-				fmt.Println("")
-				return
-			default:
-				fmt.Println("Masukan tidak valid, silakan coba lagi.")
-				fmt.Println("")
+			tools.Hapus_funds(nama_dana)
+		} else if choice == 2 {
+			var pilih int
+			for {
+				fmt.Println("1. Urutkan dari ID terkecil")
+				fmt.Println("2. Urutkan dari ID terbesar")
+				fmt.Println("0. Kembali")
+				fmt.Print("Pilihan Anda: ")
+				fmt.Scan(&pilih)
+				if pilih == 1 {
+					tools.UrutMenaikFundsID(&storage.Arr_funds, storage.Funds_count)
+					fmt.Println("Dana berhasil diurutkan berdasarkan ID terkecil.")
+					tools.Tampil_funds()
+				} else if pilih == 2 {
+					tools.UrutMenurunFundsID(&storage.Arr_funds, storage.Funds_count)
+					fmt.Println("Dana berhasil diurutkan berdasarkan ID terbesar.")
+					tools.Tampil_funds()
+				} else if pilih == 0 {
+					fmt.Println("")
+					return
+				} else {
+					fmt.Println("Masukan tidak valid, silakan coba lagi.")
+					fmt.Println("")
+					continue
+				}
 			}
-		}
+		} else if choice == 3 {
+			var pilih int
+			for {
+				fmt.Println("1. Urutkan dari total donasi terkecil")
+				fmt.Println("2. Urutkan dari total donasi terbesar")
+				fmt.Println("0. Kembali")
+				fmt.Print("Pilihan Anda: ")
+				fmt.Scan(&pilih)
 
-	case 3:
-		var pilih int
-		for {
-			fmt.Println("1. Urutkan dari total donasi terkecil")
-			fmt.Println("2. Urutkan dari total donasi terbesar")
-			fmt.Println("0. Kembali")
-			fmt.Print("Pilihan Anda: ")
-			fmt.Scan(&pilih)
-			switch pilih {
-			case 1:
-				tools.UrutMenaikFundsTotal(&storage.Arr_funds, storage.Funds_count)
-				fmt.Println("Dana berhasil diurutkan berdasarkan total donasi terkecil.")
-				tools.Tampil_funds()
-			case 2:
-				tools.UrutMenurunFundsTotal(&storage.Arr_funds, storage.Funds_count)
-				fmt.Println("Dana berhasil diurutkan berdasarkan total donasi terbesar.")
-				tools.Tampil_funds()
-			case 0:
-				fmt.Println("")
-				return
-			default:
-				fmt.Println("Masukan tidak valid, silakan coba lagi.")
-				fmt.Println("")
+				if pilih == 1 {
+					tools.UrutMenaikFundsTotal(&storage.Arr_funds, storage.Funds_count)
+					fmt.Println("Dana berhasil diurutkan berdasarkan total donasi terkecil.")
+					tools.Tampil_funds()
+				} else if pilih == 2 {
+					tools.UrutMenurunFundsTotal(&storage.Arr_funds, storage.Funds_count)
+					fmt.Println("Dana berhasil diurutkan berdasarkan total donasi terbesar.")
+					tools.Tampil_funds()
+				} else if pilih == 0 {
+					fmt.Println("")
+					return
+				} else {
+					fmt.Println("Masukan tidak valid, silakan coba lagi.")
+					fmt.Println("")
+					continue
+				}
 			}
+		} else if choice == 0 {
+			return
+		} else {
+			fmt.Println("Masukan tidak valid, silakan coba lagi.")
+			fmt.Println("")
 		}
-	case 0:
-		break
-	default:
-		fmt.Println("Masukan tidak valid, silakan coba lagi.")
-		fmt.Println("")
 	}
 }
 
